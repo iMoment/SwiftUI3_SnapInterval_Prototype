@@ -11,6 +11,7 @@
 		9105DB8A27A47E1900DF7188 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9105DB8927A47E1900DF7188 /* ContentView.swift */; };
 		9105DB8C27A47E1A00DF7188 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9105DB8B27A47E1A00DF7188 /* Assets.xcassets */; };
 		9105DB8F27A47E1A00DF7188 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9105DB8E27A47E1A00DF7188 /* Preview Assets.xcassets */; };
+		9105DB9827A480BD00DF7188 /* SocialMediaLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9105DB9727A480BD00DF7188 /* SocialMediaLink.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		9105DB8927A47E1900DF7188 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9105DB8B27A47E1A00DF7188 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9105DB8E27A47E1A00DF7188 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9105DB9727A480BD00DF7188 /* SocialMediaLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaLink.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,8 @@
 			children = (
 				9105DB8727A47E1900DF7188 /* SnapIntervalApp.swift */,
 				9105DB8927A47E1900DF7188 /* ContentView.swift */,
+				9105DB9627A4808F00DF7188 /* Model */,
+				9105DB9527A4808900DF7188 /* Views */,
 				9105DB8B27A47E1A00DF7188 /* Assets.xcassets */,
 				9105DB8D27A47E1A00DF7188 /* Preview Content */,
 			);
@@ -65,6 +69,21 @@
 				9105DB8E27A47E1A00DF7188 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9105DB9527A4808900DF7188 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9105DB9627A4808F00DF7188 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9105DB9727A480BD00DF7188 /* SocialMediaLink.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9105DB8A27A47E1900DF7188 /* ContentView.swift in Sources */,
+				9105DB9827A480BD00DF7188 /* SocialMediaLink.swift in Sources */,
 				9105DB8827A47E1900DF7188 /* SnapIntervalApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
