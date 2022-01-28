@@ -15,10 +15,10 @@ struct SocialMediaLink: Identifiable {
 }
 
 var links = [
-    SocialMediaLink(title: "Tumblr", logo: "tumblr"),
-    SocialMediaLink(title: "Twitter", logo: "twitter"),
-    SocialMediaLink(title: "Instagram", logo: "instagram"),
-    SocialMediaLink(title: "Google", logo: "google"),
-    SocialMediaLink(title: "Dribbble", logo: "dribbble"),
-    SocialMediaLink(title: "Pinterest", logo: "pinterest")
+    SocialMediaLink(title: "Tumblr", logo: "pencil.circle.fill"),
+    SocialMediaLink(title: "Twitter", logo: "trash.square.fill"),
+    SocialMediaLink(title: "Instagram", logo: "folder.circle.fill"),
+    SocialMediaLink(title: "Google", logo: "paperplane.circle.fill"),
+    SocialMediaLink(title: "Dribbble", logo: "tray.circle.fill"),
+    SocialMediaLink(title: "Pinterest", logo: "doc.circle.fill")
 ]
