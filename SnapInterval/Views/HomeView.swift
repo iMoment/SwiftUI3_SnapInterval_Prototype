@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State var offset: CGFloat = 0
+    @State var delegate = ScrollViewDelegate()
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -33,8 +34,18 @@ struct HomeView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .background(Color("background"))
+        .ignoresSafeArea()
         // MARK: ScrollView Coordinate Namespace
         .coordinateSpace(name: "SCROLL")
+        // MARK: Setting Delegate
+        .onAppear {
+            UIScrollView.appearance().delegate = delegate
+            UIScrollView.appearance().bounces = false
+        }
+        .onDisappear {
+            UIScrollView.appearance().delegate = nil
+            UIScrollView.appearance().bounces = true
+        }
     }
     
     @ViewBuilder
@@ -61,6 +72,8 @@ struct HomeView: View {
                 .frame(height: 80)
             }
         }
+        .padding(.top, getSafeArea().top)
+        .padding(.bottom, getSafeArea().bottom)
     }
 }
 
@@ -70,9 +83,45 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
+// MARK: ScrollView Delegate Manager (Not UIKit approach)
+class ScrollViewDelegate: NSObject, ObservableObject, UIScrollViewDelegate {
+    @Published var snapInterval: CGFloat = 80
+    
+    // MARK: Offset also can be fetched here
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        print(scrollView.contentOffset.y)
+    }
+    
+    // MARK: ScrollView fires EndDecelerating when scrolling fast
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let target = scrollView.contentOffset.y
+        let condition = (target / snapInterval).rounded(.toNearestOrAwayFromZero)
+        
+        print(condition)
+        scrollView.setContentOffset(CGPoint(x: 0, y: snapInterval * condition), animated: true)
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let target = targetContentOffset.pointee.y
+        let condition = (target / snapInterval).rounded(.toNearestOrAwayFromZero)
+        
+        print(condition)
+        scrollView.setContentOffset(CGPoint(x: 0, y: snapInterval * condition), animated: true)
+    }
+}
+
 extension View {
     func getScreenSize() -> CGRect {
         return UIScreen.main.bounds
+    }
+    
+    // MARK: Get SafeArea Value
+    func getSafeArea() -> UIEdgeInsets {
+        guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return .zero }
+        
+        guard let safeArea = screen.windows.first?.safeAreaInsets else { return .zero }
+        
+        return safeArea
     }
 }
 
