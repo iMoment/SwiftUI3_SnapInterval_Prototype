@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State var offset: CGFloat = 0
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -21,14 +22,19 @@ struct HomeView: View {
                         ScrollContent(showTitle: true)
                     }
                     .frame(height: 80)
+                    .offset(y: offset)
                     .clipped()
                     .background(Color("yellow"))
                     .padding(.top, getScreenSize().height / 3)
+                    .offset(y: -offset)
                     ,alignment: .top
                 )
+                .modifier(OffsetModifier(offset: $offset))
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .background(Color("background"))
+        // MARK: ScrollView Coordinate Namespace
+        .coordinateSpace(name: "SCROLL")
     }
     
     @ViewBuilder
